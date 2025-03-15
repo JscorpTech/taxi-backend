@@ -3,6 +3,7 @@ from django.db import models
 
 from ..choices import RoleChoice
 from ..managers import UserManager
+from functools import cached_property
 
 
 class User(auth_models.AbstractUser):
@@ -19,6 +20,16 @@ class User(auth_models.AbstractUser):
 
     USERNAME_FIELD = "phone"
     objects = UserManager()
+
+    @cached_property
+    def full_name(self):
+        return "%s %s" % (self.first_name, self.last_name)
+
+    @classmethod
+    def _create_fake(self):
+        return self.objects.create(
+            phone="998888112309",
+        )
 
     def __str__(self):
         return self.phone

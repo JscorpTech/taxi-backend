@@ -10,3 +10,4 @@ class RoleChoice(models.TextChoices):
     SUPERUSER = "superuser", _("Superuser")
     ADMIN = "admin", _("Admin")
     USER = "user", _("User")
+    TAXI = "taxi", _("Taxi")

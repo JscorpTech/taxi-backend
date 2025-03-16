@@ -23,7 +23,7 @@ class CarPermission(permissions.BasePermission):
         return True
 
 
-class CarbrandPermission(permissions.BasePermission):
+class CarBrandPermission(permissions.BasePermission):
 
     def __init__(self) -> None: ...
 

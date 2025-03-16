@@ -4,7 +4,7 @@ from ..models import CarBrandModel
 
 
 @register(CarBrandModel)
-class CarbrandTranslation(TranslationOptions):
+class CarBrandTranslation(TranslationOptions):
     fields = [
         "name",
     ]

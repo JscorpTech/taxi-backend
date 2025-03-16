@@ -23,7 +23,7 @@ class RetrieveOrderSerializer(BaseOrderSerializer):
 class CreateOrderSerializer(BaseOrderSerializer):
 
     def save(self, **kwargs):
-        kwargs["user"] = self.context.get("request").user
+        kwargs["user"] = self.context.get("request").bot_user
         return super().save(**kwargs)
 
     class Meta(BaseOrderSerializer.Meta):

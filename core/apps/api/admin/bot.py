@@ -8,13 +8,17 @@ from ..models import BotModel, BotUserModel
 class BotAdmin(ModelAdmin):
     list_display = (
         "id",
+        "users_count",
         "__str__",
     )
 
 
 @admin.register(BotUserModel)
-class BotuserAdmin(ModelAdmin):
+class BotUserAdmin(ModelAdmin):
     list_display = (
         "id",
-        "__str__",
+        "first_name",
+        "last_name",
+        "phone",
+        "tg_id",
     )

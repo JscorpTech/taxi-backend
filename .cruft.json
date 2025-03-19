@@ -1,0 +1,33 @@
+{
+  "template": "https://github.com/JscorpTech/django.git",
+  "commit": "152e9daff59b167410e5089809fc416021ebfd42",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "backend",
+      "project_slug": "backend",
+      "settings_module": "config.settings.local",
+      "runner": "wsgi",
+      "celery": "yes",
+      "cache": "yes",
+      "script": "entrypoint.sh",
+      "key": "key",
+      "port": "8081",
+      "phone": "998888112309",
+      "password": "2309",
+      "max_line_length": "120",
+      "silk": true,
+      "storage": true,
+      "channels": true,
+      "rosetta": false,
+      "cacheops": true,
+      "ckeditor": true,
+      "modeltranslation": true,
+      "parler": false,
+      "version": "0.1.1",
+      "_template": "https://github.com/JscorpTech/django.git",
+      "_commit": "a02d53a866784c03e96f14fe7cb4226dbc36448f"
+    }
+  },
+  "directory": null
+}

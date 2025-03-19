@@ -1,7 +1,9 @@
 from django_core.mixins import BaseViewSetMixin
 from drf_spectacular.utils import extend_schema
 from rest_framework.permissions import AllowAny
-from rest_framework.viewsets import ReadOnlyModelViewSet
+from ..permissions import BotPermission
+from core.apps.shared.utils.bot import get_bot
+from rest_framework.viewsets import ReadOnlyModelViewSet, ModelViewSet
 
 from ..models import BotModel, BotUserModel
 from ..serializers.bot import (
@@ -29,10 +31,9 @@ class BotView(BaseViewSetMixin, ReadOnlyModelViewSet):
 
 
 @extend_schema(tags=["botuser"])
-class BotUserView(BaseViewSetMixin, ReadOnlyModelViewSet):
-    queryset = BotUserModel.objects.all()
+class BotUserView(BaseViewSetMixin, ModelViewSet):
     serializer_class = ListBotUserSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [BotPermission]
 
     action_permission_classes = {}
     action_serializer_class = {
@@ -40,3 +41,6 @@ class BotUserView(BaseViewSetMixin, ReadOnlyModelViewSet):
         "retrieve": RetrieveBotUserSerializer,
         "create": CreateBotUserSerializer,
     }
+
+    def get_queryset(self):
+        return BotUserModel.objects.filter(bot=get_bot(self.request))

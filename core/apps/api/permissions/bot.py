@@ -14,10 +14,13 @@ class BotPermission(permissions.BasePermission):
         return self
 
     def has_permission(self, request, view):
+        # request.bot uchun default qiymat berish
         request.bot = None
+        # token malumotlarida (claim data) dan pk olish
         pk = get_pk(request)
         if pk is None:
             return False
+        # databasedan botni olish
         try:
             bot = BotModel.objects.get(pk=pk)
         except BotModel.DoesNotExist:
@@ -35,10 +38,13 @@ class BotUserPermission(AllowAny):
         return self
 
     def has_permission(self, request: Request, view):
+        # request.bot uchun default qiymat berish
         request.bot_user = None
+        # token malumotlarida (claim data) dan pk olish
         pk = get_pk(request)
         if pk is None:
             return False
+        # databasedan botni olish
         try:
             user = BotUserModel.objects.get(pk=pk)
         except BotUserModel.DoesNotExist:

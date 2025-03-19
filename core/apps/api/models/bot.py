@@ -8,6 +8,10 @@ class BotModel(AbstractBaseModel):
     name = models.CharField(_("name"), max_length=255)
     token = models.CharField(max_length=100, verbose_name=_("Token"))
 
+    @cached_property
+    def users_count(self) -> int:
+        return self.users.count()
+
     def __str__(self):
         return self.name
 
@@ -27,6 +31,7 @@ class BotModel(AbstractBaseModel):
 class BotUserModel(AbstractBaseModel):
     first_name = models.CharField(max_length=1000, verbose_name=_("First name"))
     last_name = models.CharField(max_length=1000, verbose_name=_("Last name"))
+    phone = models.CharField(_("phone"), max_length=255, null=True, blank=True)
     tg_id = models.IntegerField(verbose_name=_("Tg id"))
     bot = models.ForeignKey(
         "BotModel",

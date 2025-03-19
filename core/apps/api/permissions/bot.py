@@ -22,7 +22,7 @@ class BotPermission(permissions.BasePermission):
             return False
         # databasedan botni olish
         try:
-            bot = BotModel.objects.get(pk=pk)
+            bot = BotModel.objects.get(tg_id=pk)
         except BotModel.DoesNotExist:
             return False
         request.bot = bot

@@ -6,9 +6,10 @@ from ...models import BotModel
 class BaseBotSerializer(serializers.ModelSerializer):
     class Meta:
         model = BotModel
-        exclude = [
-            "created_at",
-            "updated_at",
+        fields = [
+            "id",
+            "token",
+            "tg_id",
         ]
 
 
@@ -17,7 +18,10 @@ class ListBotSerializer(BaseBotSerializer):
 
 
 class RetrieveBotSerializer(BaseBotSerializer):
-    class Meta(BaseBotSerializer.Meta): ...
+    class Meta(BaseBotSerializer.Meta):
+        fields = BaseBotSerializer.Meta.fields + [
+            "name",
+        ]
 
 
 class CreateBotSerializer(BaseBotSerializer):

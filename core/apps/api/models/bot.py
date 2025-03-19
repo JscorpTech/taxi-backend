@@ -7,6 +7,7 @@ from functools import cached_property
 class BotModel(AbstractBaseModel):
     name = models.CharField(_("name"), max_length=255)
     token = models.CharField(max_length=100, verbose_name=_("Token"))
+    tg_id = models.BigIntegerField(verbose_name=_("tg_id"), default=1, unique=True)
 
     @cached_property
     def users_count(self) -> int:

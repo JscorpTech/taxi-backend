@@ -7,11 +7,7 @@ from ..models import LocationModel, OrderModel
 
 @admin.register(OrderModel)
 class OrderAdmin(ModelAdmin):
-    list_filter = [
-        "frm",
-        "to",
-        "price",
-    ]
+    list_filter = ["frm", "to", "price", "bot"]
     search_fields = ["frm__name", "to__name", "location_long", "location_lat"] + USER_SEARCH_FIELD
     list_display = ("id", "frm", "to", "price", "user__phone")
 

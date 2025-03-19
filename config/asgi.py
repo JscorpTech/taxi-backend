@@ -20,4 +20,3 @@ application = ProtocolTypeRouter(
         # "websocket": JWTAuthMiddlewareStack(URLRouter(websocket_urlpatterns)),
     }
 )
-

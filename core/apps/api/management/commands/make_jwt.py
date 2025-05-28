@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 class Command(BaseCommand):
 
     def add_arguments(self, parser):
-        parser.add_argument("--type", default="user", required=False)
+        parser.add_argument("--type", default="bot", required=False)
 
     def handle(self, *args, **options):
         jwt_type = options.get("type", "user")
@@ -19,7 +19,7 @@ class Command(BaseCommand):
         else:
             payload = {
                 "exp": datetime.now() + timedelta(minutes=10),
-                "bot_id": 1,
+                "bot_id": 2,
             }
         token = jwt.encode(payload, env.str("DJANGO_SECRET_KEY"), "HS256")
         print("%s: %s" % (jwt_type, token))

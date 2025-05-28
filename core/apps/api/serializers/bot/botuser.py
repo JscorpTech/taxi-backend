@@ -30,6 +30,7 @@ class RetrieveBotUserSerializer(BaseBotUserSerializer):
     class Meta(BaseBotUserSerializer.Meta): ...
 
 
+
 class CreateBotUserSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):

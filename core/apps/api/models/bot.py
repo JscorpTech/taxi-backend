@@ -33,7 +33,7 @@ class BotUserModel(AbstractBaseModel):
     first_name = models.CharField(max_length=1000, verbose_name=_("First name"))
     last_name = models.CharField(max_length=1000, verbose_name=_("Last name"))
     phone = models.CharField(_("phone"), max_length=255, null=True, blank=True)
-    tg_id = models.IntegerField(verbose_name=_("Tg id"))
+    tg_id = models.BigIntegerField(verbose_name=_("Tg id"))
     bot = models.ForeignKey(
         "BotModel",
         verbose_name=_("bot"),
